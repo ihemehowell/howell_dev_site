@@ -28,11 +28,13 @@ export default function AboutFounder() {
                 </div>
 
                 {/* Image Placeholder */}
-                <div className="h-105 w-3xl rounded-2xl   flex items-center justify-center">
+                <div className="glow-card w-full rounded-2xl flex items-center justify-center">
                     <img
                         src={howell.src}
                         alt="Howell's Photo"
-                        className="rounded-2xl h-[420px]  object-cover"
+                        width={300}
+                        
+                        className="rounded-3xl object-cover"
                     />
                 </div>
 

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from "@/components/Navbar";
-import './globals.css';
 import Footer from "@/components/Footer";
+import "./globals.css";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -17,8 +17,33 @@ const geistMono = Geist_Mono({
 const fontVariables = `${geistSans.variable} ${geistMono.variable}`;
 
 export const metadata: Metadata = {
+  title: {
+    default: 'Howell Dev',
+    template: '%s | Howell Dev',
+  },
+  description: 'Founder-led development studio building modern digital products.',
+  metadataBase: new URL('https://howelldev.com'),
+  openGraph: {
     title: 'Howell Dev',
-    description: 'Building digital products that feel effortless.',
+    description: 'Designing and building modern digital products.',
+    url: 'https://howelldev.com',
+    siteName: 'Howell Dev',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Howell Dev',
+      },
+    ],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Howell Dev',
+    description: 'Founder-led development studio.',
+    images: ['/og-image.png'],
+  },
 };
 
 export default function RootLayout({

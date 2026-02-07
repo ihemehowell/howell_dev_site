@@ -1,40 +1,43 @@
+import MotionDiv from '@/components/MotionDiv'
+
+
 export default function Hero() {
     return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <MotionDiv>
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-grid">
 
             {/* Glow Background */}
             <div className="absolute inset-0 -z-10">
-                <div className="absolute top-1/2 left-1/2 w-[700px] h-[700px] -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-indigo-500 to-cyan-400 opacity-20 blur-[140px]" />
+                <div className="absolute top-1/2 left-1/2 w-[900px] h-[900px] -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-indigo-500 via-purple-500 to-cyan-400 opacity-25 blur-[160px]" />
             </div>
 
-            <div className="max-w-5xl px-6 text-center">
+            <div className="max-w-6xl px-6 text-center">
 
-                <p className="text-sm uppercase tracking-widest text-neutral-400">
-                    Howell Dev
-                </p>
+            <span className="inline-block px-4 py-2 rounded-full border border-white/10 text-sm  uppercase tracking-widest text-neutral-400">
+                    Founder-led Development Studio
+                </span>
 
-                <h1 className="mt-6 text-5xl md:text-7xl font-semibold leading-tight">
-                    Building Digital Products <br />
-                    That Feel Effortless
+                <h1 className="mt-8 text-6xl md:text-7xl font-semibold leading-tight">
+                    Designing & Building <br />
+                   Modern Digital Products
                 </h1>
 
-                <p className="mt-6 text-lg text-neutral-400 max-w-2xl mx-auto">
-                    I design and develop modern websites and web applications
-                    for startups and growing businesses.
+                <p className="mt-6 text-xl text-neutral-400 max-w-3xl mx-auto">
+                    HowellDev is a product-focused studio creating high-performance websites, web apps, and digital experience for ambitious teams
                 </p>
 
-                <div className="mt-10 flex justify-center gap-4">
+                <div className="mt-12 flex justify-center gap-4">
 
                     <a
                         href="/contact"
-                        className="px-8 py-4 rounded-xl bg-white text-black font-medium hover:bg-neutral-200 transition"
+                        className="px-10 py-4 rounded-xl bg-white text-black font-medium hover:bg-neutral-200 transition"
                     >
                         Start a Project
                     </a>
 
                     <a
                         href="/projects"
-                        className="px-8 py-4 rounded-xl border border-neutral-700 hover:border-neutral-400 transition"
+                        className="px-10 py-4 rounded-xl border border-white/15  hover:border-white/40 transition"
                     >
                         View Work
                     </a>
@@ -42,5 +45,6 @@ export default function Hero() {
                 </div>
             </div>
         </section>
+        </MotionDiv>
     )
 }
