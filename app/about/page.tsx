@@ -29,7 +29,14 @@ export default function AboutPage() {
             color: { value: "#3B82F6" },
             links: { enable: true, color: "#3B82F6", distance: 120, opacity: 0.2, width: 1 },
             move: { enable: true, speed: 0.6 },
-            number: { value: 40, density: { enable: true, area: 800 } },
+            number: {
+  value: 40,
+  density: {
+    enable: true,
+    width: 800,
+    height: 800,
+  },
+},
             size: { value: { min: 1, max: 3 } },
             opacity: { value: 0.5 },
           },
