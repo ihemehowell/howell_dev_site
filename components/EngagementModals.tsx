@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { SiCheckmarx } from 'react-icons/si'
 
 const models = [
   {
@@ -52,25 +53,25 @@ export default function EngagementModels() {
           How We Can Work Together
         </h2>
 
-        <motion.div 
+        <motion.div
           className="mt-16 grid md:grid-cols-3 gap-10"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           variants={{
             hidden: {},
-            visible: { transition: { staggerChildren: 0.15 } }
+            visible: { transition: { staggerChildren: 0.15 } },
           }}
         >
           {models.map((model, i) => (
             <motion.div
               key={i}
-              className="glow-card p-10 rounded-2xl bg-neutral-900/60 border border-white/10
-                         hover:border-white/25 hover:scale-105 hover:shadow-[0_0_25px_rgba(255,255,255,0.05)]
+              className="glow-card relative p-10 rounded-2xl bg-neutral-900/60 border border-white/10
+                         hover:border-white/25 hover:scale-105 hover:shadow-[0_0_30px_rgba(59,130,246,0.3)]
                          transition-transform duration-300"
               variants={{
                 hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
               }}
             >
               <h3 className="text-2xl font-medium">{model.name}</h3>
@@ -80,7 +81,8 @@ export default function EngagementModels() {
               <ul className="mt-6 space-y-3 text-neutral-400 mb-8">
                 {model.features.map((feature, idx) => (
                   <li key={idx} className="flex items-center gap-2">
-                    <span className="text-white">✔</span> {feature}
+                    <span className="text-white/50 font-bold"><SiCheckmarx className="w-4 h-4" /></span>
+                    {feature}
                   </li>
                 ))}
               </ul>
@@ -88,7 +90,7 @@ export default function EngagementModels() {
               <Link
                 href="/contact"
                 className="inline-block px-8 py-4 rounded-xl bg-white text-black font-medium transition-all
-                           hover:bg-black hover:text-white hover:scale-105"
+                           hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 hover:text-white hover:scale-105"
               >
                 Get Started
               </Link>

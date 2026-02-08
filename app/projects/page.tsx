@@ -1,6 +1,7 @@
 'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'
+import { img } from 'framer-motion/client'
 import { ChevronRight } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
@@ -16,6 +17,7 @@ const projects = [
     description:
       'Scalable eCommerce platform with cart, checkout, admin dashboard, and product management.',
     tags: ['Next.js', 'Supabase', 'Stripe', 'Tailwind'],
+    img: '/projects/project1.png',
   },
   {
     slug: 'event-planner',
@@ -109,7 +111,7 @@ export default function ProjectsPage() {
                 href={`/projects/${project.slug}`}
                 className="group p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition flex flex-col h-full"
               >
-                <div className="h-48 rounded-xl bg-neutral-800 mb-6" />
+                <img src={project.img} alt={project.title} className="w-full h-48 object-cover rounded-xl mb-6" />
 
                 <h3 className="text-2xl font-medium">{project.title}</h3>
                 <p className="mt-3 text-neutral-400">{project.description}</p>

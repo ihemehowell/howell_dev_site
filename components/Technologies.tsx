@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { technologies } from '@/data/technologies'
-import Particles from './Particles'
+// import Particles from './Particles'
 import TechMarquee from './TechMarquee'
 
 const filters = ['All', 'Frontend', 'Backend', 'Tools']
@@ -19,7 +19,7 @@ export default function Technologies() {
   return (
     <section className="relative py-28 bg-black text-white overflow-hidden bg-grid">
 
-      <Particles />
+      {/* <Particles /> */}
 
       <div className="relative max-w-7xl mx-auto px-6">
 
@@ -27,7 +27,9 @@ export default function Technologies() {
         <motion.h2
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="text-4xl md:text-5xl font-bold "
+       className="text-4xl md:text-5xl font-bold
+          bg-gradient-to-r from-white via-white to-white/70
+          bg-clip-text text-transparent"
         >
           HowellDev Tech Stack
         </motion.h2>
@@ -39,21 +41,41 @@ export default function Technologies() {
         {/* Marquee */}
         <TechMarquee />
 
+        
         {/* Filters */}
-        <div className="flex justify-center gap-4 mb-12">
-          {filters.map(f => (
-            <button
-              key={f}
-              onClick={() => setActive(f)}
-              className={`px-6 py-2 rounded-full border transition
-              ${active === f
-                ? 'bg-transparent border-white/80 text-white'
-                : 'border-white/20 hover:border-white/50 text-white/70 hover:text-white'}`}
-            >
-              {f}
-            </button>
-          ))}
-        </div>
+<div className="flex justify-center gap-3 mb-14 flex-wrap">
+
+  {filters.map(f => {
+    const isActive = active === f
+
+    return (
+      <button
+        key={f}
+        onClick={() => setActive(f)}
+        className="relative px-6 py-2 rounded-full text-sm transition"
+      >
+
+        {isActive && (
+          <motion.span
+            layoutId="activeTechPill"
+            className="absolute inset-0 rounded-full
+            bg-white/10 border border-white/60"
+            transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+          />
+        )}
+
+        <span
+          className={`relative z-10
+          ${isActive ? 'text-white' : 'text-white/60 hover:text-white'}`}
+        >
+          {f}
+        </span>
+
+      </button>
+    )
+  })}
+
+</div>
 
         {/* Grid */}
         <div className="grid md:grid-cols-3 gap-10">
@@ -78,7 +100,11 @@ export default function Technologies() {
                 opacity-0 group-hover:opacity-100 transition" />
 
               <div className="flex items-center gap-4">
-                <tech.icon className="text-4xl text-white/50 drop-shadow-[0_0_12px_rgba(255,255,255,0.4)]" />
+                <tech.icon
+                className="text-4xl text-white/50
+                group-hover:text-blue-400
+                transition-colors"
+              />
                 <h3 className="text-lg font-semibold">{tech.name}</h3>
               </div>
 
@@ -88,6 +114,7 @@ export default function Technologies() {
                   <motion.div
                     initial={{ width: 0 }}
                     whileInView={{ width: `${tech.level}%` }}
+                    viewport={{ once: true }}
                     transition={{ duration: 1 }}
                     className="h-full bg-gradient-to-r from-blue-500 to-purple-500"
                   />

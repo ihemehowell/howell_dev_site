@@ -1,42 +1,17 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Particles from '@tsparticles/react'
 import Timeline from '@/components/Timeline'
-// import { loadFull } from 'tsparticles'
+
 
 export const Metadata = {
   title: 'About Howell Dev',
 }
 
 export default function AboutPage() {
-  const particlesInit = async (main: any) => {
-    // await loadFull(main)
-  }
 
   return (
     <main className="relative min-h-screen px-6 pt-32 max-w-4xl mx-auto">
-
-      {/* Particles Background */}
-      <Particles
-        id="tsparticles"
-        init={particlesInit}
-        options={{
-          background: { color: { value: "#000000" } },
-          fpsLimit: 60,
-          interactivity: { events: { onHover: { enable: true, mode: "repulse" } } },
-          particles: {
-            color: { value: "#3B82F6" },
-            links: { enable: true, color: "#3B82F6", distance: 120, opacity: 0.2, width: 1 },
-            move: { enable: true, speed: 0.6 },
-            number: { value: 40, density: { enable: true, area: 800 } },
-            size: { value: { min: 1, max: 3 } },
-            opacity: { value: 0.5 },
-          },
-        }}
-        className="absolute inset-0 -z-10"
-      />
-
       {/* Page Title */}
       <motion.h1
         initial={{ opacity: 0, y: 20 }}
@@ -70,7 +45,7 @@ export default function AboutPage() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8"
+        className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 "
       >
         {[
           { value: '4+', label: 'Years Experience' },
@@ -85,7 +60,7 @@ export default function AboutPage() {
             transition={{ delay: i * 0.1, duration: 0.5 }}
             className="p-6 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 text-center hover:shadow-[0_0_25px_rgba(59,130,246,0.4)] transition"
           >
-            <p className="text-3xl font-bold text-gradient  bg-clip-text text-transparent">
+            <p className="text-3xl font-bold text-gradient text-white  bg-clip-text text-transparent">
               {item.value}
             </p>
             <p className="text-neutral-400 mt-1">{item.label}</p>

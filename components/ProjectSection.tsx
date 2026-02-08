@@ -1,3 +1,5 @@
+'use client'
+
 import MotionDiv from '@/components/MotionDiv'
 
 const projects = [
@@ -17,9 +19,9 @@ const projects = [
     tags: ['React', 'Charts', 'UI System'],
   },
   {
-    title: 'Admin Dashboard',
-    desc: 'Analytics dashboard for internal operations.',
-    tags: ['React', 'Charts', 'UI System'],
+    title: 'Portfolio Website',
+    desc: 'Personal portfolio website showcasing projects and skills.',
+    tags: ['Next.js', 'Tailwind', 'Framer Motion'],
   },
 ]
 
@@ -39,22 +41,18 @@ export default function ProjectsSection() {
         <div className="mt-16 grid md:grid-cols-2 gap-12">
 
           {projects.map((project, i) => (
-            <MotionDiv key={i} delay={i * 0.1}>
+            <MotionDiv key={project.title} delay={i * 0.1}>
 
-              <div className="glow-card group rounded-3xl cursor-pointer bg-neutral-900/60 border border-white/10 overflow-hidden hover:border-white/25 transition">
+              <div className="glow-card relative group rounded-3xl cursor-pointer bg-neutral-900/60 border border-white/10 overflow-hidden hover:shadow-[0_0_40px_rgba(59,130,246,0.4)] transition-all duration-300">
 
                 {/* Image Placeholder */}
-                <div className="h-64 bg-neutral-800" />
+                <div className="h-64 bg-neutral-800 group-hover:scale-105 transition-transform duration-300" />
 
                 <div className="p-8">
 
-                  <h3 className="text-2xl font-medium">
-                    {project.title}
-                  </h3>
+                  <h3 className="text-2xl font-medium">{project.title}</h3>
 
-                  <p className="mt-3 text-neutral-400">
-                    {project.desc}
-                  </p>
+                  <p className="mt-3 text-neutral-400">{project.desc}</p>
 
                   <div className="mt-4 flex flex-wrap gap-2">
                     {project.tags.map((tag, index) => (
@@ -68,8 +66,9 @@ export default function ProjectsSection() {
                   </div>
 
                   <div className="mt-6">
-                    <span className="group relative overflow-hidden px-8 py-4 rounded-xl bg-white text-black font-medium transition">
+                    <span className="group relative overflow-hidden px-8 py-4 rounded-xl bg-white text-black font-medium transition ">
                       View Case Study →
+                      <span className="absolute inset-0 rounded-xl bg-white/10 opacity-0 group-hover:opacity-100 transition" />
                     </span>
                   </div>
 
@@ -80,7 +79,6 @@ export default function ProjectsSection() {
           ))}
 
         </div>
-
       </div>
     </section>
   )
