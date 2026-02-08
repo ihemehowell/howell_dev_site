@@ -1,9 +1,10 @@
+import Image from "next/image";
 
 
 
 export default function AboutFounder() {
     return (
-        <section className="py-18 px-6 border-t border-white/5">
+        <section className="py-18 px-6 border-t border-white/5 ">
             <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
 
                 {/* Text */}
@@ -29,10 +30,11 @@ export default function AboutFounder() {
 
                 {/* Image Placeholder */}
                 <div className="glow-card w-full rounded-2xl flex items-center justify-center">
-                <img
+                <Image
                     src="/images/howell.jpg" 
                     alt="Howell's Photo"
                     width={300}
+                    height={300}
                     className="rounded-3xl object-cover"
                 />
                 </div>

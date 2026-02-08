@@ -1,12 +1,11 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronRight } from 'lucide-react'
-
 import Link from 'next/link'
 import { useState } from 'react'
 
-export const  Metadata = {
+export const Metadata = {
   title: 'Projects',
 }
 
@@ -48,16 +47,15 @@ export default function ProjectsPage() {
   const filtered =
     active === 'All'
       ? projects
-      : projects.filter(p => p.tags.includes(active))
+      : projects.filter(project => project.tags.includes(active))
 
   return (
     <motion.main
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
-      className="min-h-screen px-6 pt-32 max-w-6xl mx-auto"
+      className="min-h-screen px-6 py-32 max-w-6xl mx-auto"
     >
-
       {/* Header */}
       <motion.h1
         initial={{ opacity: 0, y: 20 }}
@@ -79,64 +77,69 @@ export default function ProjectsPage() {
 
       {/* Filters */}
       <div className="mt-10 flex gap-3 flex-wrap">
-        {techs.map(t => (
+        {techs.map(tech => (
           <button
-            key={t}
-            onClick={() => setActive(t)}
-            className={`px-4 py-2 rounded-lg border transition
-              ${active === t
+            key={tech}
+            onClick={() => setActive(tech)}
+            className={`px-6 py-2 rounded-full border transition ${
+              active === tech
                 ? 'bg-white text-black'
                 : 'bg-neutral-900 border-white/10 text-white'
-              }
-            `}
+            }`}
           >
-            {t}
+            {tech}
           </button>
         ))}
       </div>
 
       {/* Projects Grid */}
-      <div className="mt-16 grid md:grid-cols-2 gap-10">
+      <div className="mt-16 grid md:grid-cols-2 gap-10 ">
+        <AnimatePresence>
+          {filtered.map(project => (
+            <motion.div
+              key={project.slug}
+              layout
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+              className="rounded-2xl bg-white/5 border border-white/10 shadow-lg"
+            >
+              <Link
+                href={`/projects/${project.slug}`}
+                className="group p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition flex flex-col h-full"
+              >
+                <div className="h-48 rounded-xl bg-neutral-800 mb-6" />
 
-        {filtered.map(project => (
-          <Link
-            key={project.slug}
-            href={`/projects/${project.slug}`}
-            className="group p-8 rounded-2xl bg-neutral-900 border border-white/10 hover:border-white/20 transition glow-card"
-          >
+                <h3 className="text-2xl font-medium">{project.title}</h3>
+                <p className="mt-3 text-neutral-400">{project.description}</p>
 
-            <div className="h-48 rounded-xl bg-neutral-800 mb-6" />
+                <div className="mt-4 flex flex-wrap gap-2 mb-10">
+                  {project.tags.map((tag, i) => (
+                    <motion.span
+                      key={tag}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: i * 0.05 }}
+                      className="text-xs px-3 py-1 rounded-full bg-neutral-800 border border-white/10"
+                    >
+                      {tag}
+                    </motion.span>
+                  ))}
+                </div>
 
-            <h3 className="text-2xl font-medium">
-              {project.title}
-            </h3>
-
-            <p className="mt-3 text-neutral-400">
-              {project.description}
-            </p>
-
-            <div className="mt-4 flex flex-wrap gap-2 mb-10">
-              {project.tags.map(tag => (
                 <span
-                  key={tag}
-                  className="text-xs px-3 py-1 rounded-full bg-neutral-800 border border-white/10"
+                  className="mt-12 py-2 px-4 bg-transparent text-white rounded-full opacity-70 
+                             hover:opacity-100 transition transform flex items-center gap-2 border border-white/10 
+                             group-hover:scale-105 w-50 text-center justify-center"
                 >
-                  {tag}
+                  View case study <ChevronRight className="inline-block" />
                 </span>
-              ))}
-            </div>
-
-            <span
-            className="mt-12 py-2 px-4 bg-white text-black rounded-full opacity-70 hover:opacity-100 transition"
-          >
-            View case study <ChevronRight className="inline-block ml-2" />
-          </span>
-
-          </Link>
-        ))}
-
+              </Link>
+            </motion.div>
+          ))}
+        </AnimatePresence>
       </div>
-
     </motion.main>
   )
 }

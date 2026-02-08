@@ -5,19 +5,23 @@ import CTA from "@/components/CTA";
 import Capabilities from '@/components/Capabilities';
 import { Engagement } from 'next/font/google';
 import EngagementModels from '@/components/EngagementModals';
+import Technologies from '@/components/Technologies';
 
 export default function Home() {
     return (
         <main>
             <Hero /> 
+
             <AboutFounder />
-            <div className="h-[100px]"></div>
+
+            <Technologies />
+            
             <Capabilities />
-            <div className="h-[100px]"></div>
+            
             <ProjectsSection />
-            <div className="h-[100px]"></div>
+            
             <CTA />
-            <div className="h-[100px]"></div>
+            
             <EngagementModels />
         </main>
     )

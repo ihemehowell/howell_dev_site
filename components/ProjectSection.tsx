@@ -16,11 +16,16 @@ const projects = [
     desc: 'Analytics dashboard for internal operations.',
     tags: ['React', 'Charts', 'UI System'],
   },
+  {
+    title: 'Admin Dashboard',
+    desc: 'Analytics dashboard for internal operations.',
+    tags: ['React', 'Charts', 'UI System'],
+  },
 ]
 
 export default function ProjectsSection() {
   return (
-    <section className="py-32 px-6 border-t border-white/5">
+    <section className="py-32 px-6 border-t border-white/5 bg-grid">
       <div className="max-w-6xl mx-auto">
 
         <p className="text-sm uppercase tracking-widest text-neutral-400">
