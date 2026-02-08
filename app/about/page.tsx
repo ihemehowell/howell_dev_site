@@ -10,39 +10,12 @@ export const Metadata = {
 }
 
 export default function AboutPage() {
-  const particlesInit = async (main: any) => {
-    // await loadFull(main)
-  }
-
+  
   return (
     <main className="relative min-h-screen px-6 pt-32 max-w-4xl mx-auto">
 
-      {/* Particles Background */}
-      <Particles
-        id="tsparticles"
-        init={particlesInit}
-        options={{
-          background: { color: { value: "#000000" } },
-          fpsLimit: 60,
-          interactivity: { events: { onHover: { enable: true, mode: "repulse" } } },
-          particles: {
-            color: { value: "#3B82F6" },
-            links: { enable: true, color: "#3B82F6", distance: 120, opacity: 0.2, width: 1 },
-            move: { enable: true, speed: 0.6 },
-            number: {
-  value: 40,
-  density: {
-    enable: true,
-    width: 800,
-    height: 800,
-  },
-},
-            size: { value: { min: 1, max: 3 } },
-            opacity: { value: 0.5 },
-          },
-        }}
-        className="absolute inset-0 -z-10"
-      />
+    
+     
 
       {/* Page Title */}
       <motion.h1
