@@ -37,13 +37,7 @@ export default function AboutFounder() {
             border border-white/10
             bg-neutral-900/40 backdrop-blur-xl shadow-xl">
 
-            <Image
-              src='/images/howell.jpg'
-              alt="Howell portrait"
-              fill
-              className="object-cover"
-              priority
-            />
+            
 
           </div>
 
