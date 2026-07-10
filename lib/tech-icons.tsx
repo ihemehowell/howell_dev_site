@@ -6,7 +6,6 @@ import {
   SiTailwindcss,
   SiSupabase,
   SiNodedotjs,
-  SiOpenai,
   SiFramer,
   SiExpress,
   SiPostgresql,
@@ -24,7 +23,7 @@ import {
   SiHtml5,
   SiCss,
 } from "react-icons/si";
-import { Code2 } from "lucide-react";
+import { Code2, Sparkles } from "lucide-react";
 import { IconType } from "react-icons";
 
 interface TechIconEntry {
@@ -32,7 +31,6 @@ interface TechIconEntry {
   color: string;
 }
 
-// Normalize keys: lowercase, strip spaces/dots
 const normalize = (str: string) => str.toLowerCase().replace(/[.\s]/g, "");
 
 const techIconMap: Record<string, TechIconEntry> = {
@@ -44,7 +42,7 @@ const techIconMap: Record<string, TechIconEntry> = {
   tailwindcss: { icon: SiTailwindcss, color: "#38BDF8" },
   supabase: { icon: SiSupabase, color: "#3ECF8E" },
   nodejs: { icon: SiNodedotjs, color: "#5FA04E" },
-  openai: { icon: SiOpenai, color: "#FFFFFF" },
+  openai: { icon: Sparkles, color: "#FFFFFF" }, // Simple Icons removed the OpenAI mark; using a neutral fallback
   framermotion: { icon: SiFramer, color: "#0055FF" },
   express: { icon: SiExpress, color: "#FFFFFF" },
   postgresql: { icon: SiPostgresql, color: "#4169E1" },
