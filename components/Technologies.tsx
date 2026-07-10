@@ -99,7 +99,7 @@ export default function Technologies() {
                 transition-all duration-300"
               >
                 <div className="absolute inset-0 rounded-2xl
-                    bg-gradient-to-br from-white/10 to-transparent
+                    bg-linear-to-br from-white/10 to-transparent
                     opacity-0 group-hover:opacity-100 transition" />
 
                 <div className="flex items-center gap-4">
@@ -120,7 +120,7 @@ export default function Technologies() {
                       whileInView={{ width: `${tech.level}%` }}
                       viewport={{ once: true }}
                       transition={{ duration: 1 }}
-                      className="h-full bg-gradient-to-r from-blue-500 to-purple-500"
+                      className="h-full bg-linear-to-r from-blue-500 to-purple-500"
                     />
                   </div>
                   <p className="text-sm text-gray-400 mt-1">{tech.level}%</p>
