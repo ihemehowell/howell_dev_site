@@ -1,147 +1,117 @@
-'use client'
+"use client";
 
-import { motion, AnimatePresence } from 'framer-motion'
-import { img } from 'framer-motion/client'
-import { ChevronRight } from 'lucide-react'
-import Link from 'next/link'
-import { useState } from 'react'
+import { useMemo, useState } from "react";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import Image from "next/image";
 
-export const Metadata = {
-  title: 'Projects',
-}
+import { projects } from "@/data/projects";
 
-const projects = [
-  {
-    slug: 'ecommerce-platform',
-    title: 'Modern eCommerce Platform',
-    description:
-      'Scalable eCommerce platform with cart, checkout, admin dashboard, and product management.',
-    tags: ['Next.js', 'Supabase', 'Stripe', 'Tailwind'],
-    img: '/projects/project1.png',
-  },
-  {
-    slug: 'event-planner',
-    title: 'Event Planner Web App',
-    description:
-      'Full-stack event planning system with bookings, admin tools, and customer management.',
-    tags: ['React', 'Node.js', 'MongoDB'],
-  },
-  {
-    slug: 'saas-dashboard',
-    title: 'SaaS Analytics Dashboard',
-    description:
-      'Responsive analytics dashboard with authentication and role-based access.',
-    tags: ['Next.js', 'Postgres', 'Auth'],
-  },
-  {
-    slug: 'social-network',
-    title: 'Social Network Platform',
-    description:
-      'Modern social network platform with profiles, posts, messaging, and realtime updates.',
-    tags: ['Next.js', 'Socket.io', 'MongoDB', 'Tailwind'],
-  },
-]
+const filters = ["All", "Product", "E-commerce", "Client", "Hackathon"];
 
 export default function ProjectsPage() {
-  const techs = ['All', 'Next.js', 'React', 'Supabase', 'Stripe']
-  const [active, setActive] = useState('All')
+  const [activeFilter, setActiveFilter] = useState("All");
 
-  const filtered =
-    active === 'All'
-      ? projects
-      : projects.filter(project => project.tags.includes(active))
+  const filteredProjects = useMemo(() => {
+    if (activeFilter === "All") return projects;
+    return projects.filter((p) => p.type === activeFilter);
+  }, [activeFilter]);
 
   return (
-    <motion.main
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.6 }}
-      className="min-h-screen px-6 py-32 max-w-6xl mx-auto"
-    >
+    <main className="min-h-screen bg-black text-white px-6 pt-32 pb-24">
       {/* Header */}
-      <motion.h1
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-5xl font-semibold"
+        className="max-w-4xl mx-auto"
       >
-        Projects
-      </motion.h1>
+        <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
+          Projects
+        </h1>
 
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="mt-6 text-neutral-400"
-      >
-        Selected work and case studies.
-      </motion.p>
+        <p className="mt-4 text-neutral-400 max-w-2xl">
+          A collection of products, experiments, and client work focused on
+          building scalable, real-world systems.
+        </p>
+      </motion.div>
 
       {/* Filters */}
-      <div className="mt-10 flex gap-3 flex-wrap">
-        {techs.map(tech => (
+      <div className="max-w-4xl mx-auto mt-10 flex flex-wrap gap-3">
+        {filters.map((filter) => (
           <button
-            key={tech}
-            onClick={() => setActive(tech)}
-            className={`px-6 py-2 rounded-full border transition ${
-              active === tech
-                ? 'bg-white text-black'
-                : 'bg-neutral-900 border-white/10 text-white'
+            key={filter}
+            onClick={() => setActiveFilter(filter)}
+            className={`px-5 py-2 rounded-full border transition text-sm ${
+              activeFilter === filter
+                ? "bg-white text-black"
+                : "bg-white/5 border-white/10 text-white hover:bg-white/10"
             }`}
           >
-            {tech}
+            {filter}
           </button>
         ))}
       </div>
 
-      {/* Projects Grid */}
-      <div className="mt-16 grid md:grid-cols-2 gap-10 ">
-        <AnimatePresence>
-          {filtered.map(project => (
-            <motion.div
-              key={project.slug}
-              layout
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-              className="rounded-2xl bg-white/5 border border-white/10 shadow-lg"
+      {/* Grid */}
+      <div className="max-w-6xl mx-auto mt-14 grid md:grid-cols-3 gap-8">
+        {filteredProjects.map((project, i) => (
+          <motion.div
+            key={project.slug}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: i * 0.05 }}
+          >
+            <Link
+              href={`/projects/${project.slug}`}
+              className="group block rounded-2xl border border-white/10 bg-white/5 overflow-hidden hover:bg-white/10 transition"
             >
-              <Link
-                href={`/projects/${project.slug}`}
-                className="group p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition flex flex-col h-full"
-              >
-                <img src={project.img} alt={project.title} className="w-full h-48 object-cover rounded-xl mb-6" />
+              {/* Image */}
+              <div className="relative h-52 w-full overflow-hidden">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition duration-500"
+                />
+              </div>
 
-                <h3 className="text-2xl font-medium">{project.title}</h3>
-                <p className="mt-3 text-neutral-400">{project.description}</p>
+              {/* Content */}
+              <div className="p-6">
+                <div className="flex items-center justify-between">
+                  <h2 className="text-xl font-semibold">{project.title}</h2>
 
-                <div className="mt-4 flex flex-wrap gap-2 mb-10">
-                  {project.tags.map((tag, i) => (
-                    <motion.span
+                  {project.year && (
+                    <span className="text-xs text-neutral-400">
+                      {project.year}
+                    </span>
+                  )}
+                </div>
+
+                <p className="mt-3 text-neutral-400 text-sm leading-relaxed">
+                  {project.description}
+                </p>
+
+                {/* Tags */}
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {project.tags?.slice(0, 3).map((tag) => (
+                    <span
                       key={tag}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: i * 0.05 }}
-                      className="text-xs px-3 py-1 rounded-full bg-neutral-800 border border-white/10"
+                      className="text-xs px-3 py-1 rounded-full bg-white/10 border border-white/10 text-neutral-300"
                     >
                       {tag}
-                    </motion.span>
+                    </span>
                   ))}
                 </div>
 
-                <span
-                  className="mt-12 py-2 px-4 bg-transparent text-white rounded-full opacity-70 
-                             hover:opacity-100 transition transform flex items-center gap-2 border border-white/10 
-                             group-hover:scale-105 w-50 text-center justify-center"
-                >
-                  View case study <ChevronRight className="inline-block" />
-                </span>
-              </Link>
-            </motion.div>
-          ))}
-        </AnimatePresence>
+                {/* CTA */}
+                <div className="mt-6 text-sm text-white/70 group-hover:text-white transition flex items-center gap-2">
+                  View case study →
+                </div>
+              </div>
+            </Link>
+          </motion.div>
+        ))}
       </div>
-    </motion.main>
-  )
+    </main>
+  );
 }

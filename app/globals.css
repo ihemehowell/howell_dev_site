@@ -55,3 +55,12 @@ body {
 .glow-card:hover::before {
   opacity: 1;
 }
+
+/* hide scrollbar utility */
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
