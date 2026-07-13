@@ -64,3 +64,34 @@ body {
 .hide-scrollbar::-webkit-scrollbar {
   display: none; /* Safari and Chrome */
 }
+
+/* Performance optimizations for animations */
+* {
+  will-change: auto; /* Let browser optimize */
+}
+
+.motion-reduce {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Custom scrollbar for better performance */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Optimize transforms */
+.will-change-transform {
+  will-change: transform;
+}
+
+/* Reduce repaints */
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
