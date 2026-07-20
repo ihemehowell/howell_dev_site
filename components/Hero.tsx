@@ -8,7 +8,7 @@ export default function Hero() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-10">
       {/* Glow */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/2 left-1/2 w-[900px] h-[900px] -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-indigo-500 via-purple-500 to-cyan-400 opacity-25 blur-[160px]" />
+        <div className="absolute top-1/2 left-1/2 w-225 h-225 -translate-x-1/2 -translate-y-1/2 bg-linear-to-r from-indigo-500 via-purple-500 to-cyan-400 opacity-25 blur-[160px]" />
       </div>
 
       <div className="max-w-6xl px-6 text-center">

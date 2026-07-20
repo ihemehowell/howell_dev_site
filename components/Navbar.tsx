@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 // import Image from "next/image";
 
 const navLinks = [
@@ -38,12 +39,16 @@ export default function Navbar() {
       rounded-2xl px-6`}
     >
       {/* Top Bar */}
-      <div className="h-14 flex items-center justify-between">
+      <div className="h-15 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="font-medium">
-          <span className="ml-2 italic text-foreground text-xl">
-            HowellDevs
-          </span>
+        <Link href="/" className="font-medium ">
+          <Image
+          src="/logo.png"
+          alt="Logo"
+          height={150}
+          width={150}
+          className="w-[150px] h-full object-contain "
+        />
         </Link>
 
         {/* Desktop Nav */}

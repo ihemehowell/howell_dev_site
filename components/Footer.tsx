@@ -1,6 +1,7 @@
 import Link from 'next/link'
-import { Github, Linkedin, Twitter, Mail, Smartphone } from 'lucide-react'
+import { Github, Linkedin, Twitter, Mail } from 'lucide-react'
 import { SiWhatsapp } from 'react-icons/si'
+import Image from 'next/image'
 
 export default function Footer() {
   return (
@@ -9,7 +10,15 @@ export default function Footer() {
 
         {/* Brand */}
         <div>
-          <h3 className="text-2xl font-semibold">Howell Dev</h3>
+          <Link href="/">
+            <Image
+              src="/logo.png"
+              alt="Logo"
+              height={150}
+              width={150}
+              className="w-50 object-contain"
+            />
+          </Link>
           <p className="mt-4 text-neutral-400 leading-relaxed">
             Frontend-focused developer building modern web experiences for
             startups and growing businesses.
@@ -56,8 +65,9 @@ export default function Footer() {
               <Github className="w-5 h-5" />
             </a>
 
+            {/* TODO: swap in your real LinkedIn profile URL */}
             <a
-              href="https://linkedin.com"
+              href="https://linkedin.com/in/your-profile"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 rounded-xl bg-neutral-900 border border-white/10 hover:border-white/30 hover:scale-110 transition"
@@ -65,8 +75,9 @@ export default function Footer() {
               <Linkedin className="w-5 h-5" />
             </a>
 
+            {/* TODO: swap in your real X/Twitter handle */}
             <a
-              href="https://x.com"
+              href="https://x.com/your-handle"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 rounded-xl bg-neutral-900 border border-white/10 hover:border-white/30 hover:scale-110 transition"
@@ -75,14 +86,17 @@ export default function Footer() {
             </a>
 
             <a
-              href="mailto:hello@howelldev.com"
+              href="mailto:kelvinuc111@gmail.com"
               className="p-3 rounded-xl bg-neutral-900 border border-white/10 hover:border-white/30 hover:scale-110 transition"
             >
               <Mail className="w-5 h-5" />
             </a>
 
+            {/* NOTE: WhatsApp deep links need the FULL international number,
+                no leading 0. Nigerian numbers use country code 234.
+                07047845861 -> 2347047845861 (double-check this is correct) */}
             <a
-              href="https://wa.me/07047845861"
+              href="https://wa.me/2347047845861"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 rounded-xl bg-neutral-900 border border-white/10 hover:border-white/30 hover:scale-110 transition"

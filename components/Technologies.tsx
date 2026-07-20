@@ -42,7 +42,7 @@ export default function Technologies() {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white via-white to-white/70 bg-clip-text text-transparent"
+          className="text-4xl md:text-5xl font-bold bg-linear-to-r from-white via-white to-white/70 bg-clip-text text-transparent"
         >
           HowellDev Tech Stack
         </motion.h2>

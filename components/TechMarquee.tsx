@@ -11,8 +11,8 @@ export default function TechMarquee() {
     <div className="relative overflow-hidden py-10">
 
       {/* Fade edges */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-black to-transparent z-10" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-black to-transparent z-10" />
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-linear-to-r from-black to-transparent z-10" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-linear-to-l from-black to-transparent z-10" />
 
       <motion.div
         className="flex w-max gap-12 items-center motion-reduce:animate-none"

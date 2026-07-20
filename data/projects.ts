@@ -1,5 +1,5 @@
 import { Project } from "@/types/projects";
-import { project7, project8, project9, project10, project1, project2, project3, project4, project5, project6 } from "@/public/projects";
+import { project7, project8, project9, project10, project1, project2, project3, project4, project5, project6 } from "@/app/assets/projects";
 
 export const projects: Project[] = [
   {

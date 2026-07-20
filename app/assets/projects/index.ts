@@ -1,0 +1,10 @@
+export const project1 = "/projects/project-1.png";
+export const project2 = "/projects/project-2.png";
+export const project3 = "/projects/project-3.png";
+export const project4 = "/projects/project-4.png";
+export const project5 = "/projects/project-5.png";
+export const project6 = "/projects/project-6.png";
+export const project7 = "/projects/meetric.png";
+export const project8 = "/projects/jochenna.png";
+export const project9 = "/projects/serenity.png";
+export const project10 = "/projects/howell.png";

@@ -3,7 +3,6 @@ import AboutFounder from "@/components/AboutFounder";
 import ProjectsSection from "@/components/ProjectSection";
 import CTA from "@/components/CTA";
 import Capabilities from '@/components/Capabilities';
-import { Engagement } from 'next/font/google';
 // import EngagementModels from '@/components/EngagementModals';
 import Technologies from '@/components/Technologies';
 
